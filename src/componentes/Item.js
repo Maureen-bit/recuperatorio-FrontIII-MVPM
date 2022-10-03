@@ -3,10 +3,9 @@
 // 2- Presentar el nombre de la plataforma que le llega como prop
 
 export default function Item(props) {
+    const { handleFavoritaPlataforma, nombrePlataforma } = props;
     return (
-      <>
-          // 🚩
-      </>
+      <li onClick={handleFavoritaPlataforma}>{nombrePlataforma}</li>
     );
   }
   

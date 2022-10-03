@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Tarjeta from "./componentes/Tarjeta";
 
 import "./index.css";
 
@@ -7,26 +8,27 @@ import "./index.css";
 // 2- crear los metodos que me permitan asiganarle valor correspondiente a esas variables
 // 3- incorporar el componete Tarjeta en 🚩
 
+
 function App() {
-  const [temaOscuro, setTemaOscuro] = useState(false);
-  const [favorita, setFavorita] = useState("");
 
-
+  const [tema, setTema] = useState(false);
+  const [plataformaFavorita, setPlataformaFavorita] = useState("");
+  
   const handleTema = () => {
-   
+    setTema(!tema);
   };
 
-  const handleFavorita = () => {
-  
+  const handleFavorita = (plataforma) => {
+    setPlataformaFavorita(plataforma)
   };
 
   return (
-    <div id="App" className={temaOscuro ? "dark" : ""}>
+    <div id="App" className={tema ? "dark" : ""}>
       <h1>¡Bienvenidos!</h1>
       <h2>Contanos, ¿cuál es tu plataforma favorita?</h2>
-      { favorita !== "" ? (<h4 className={ favorita === "Twitter" ? "tw" : favorita === "Facebook" ? "fb" : "yt" }> {favorita}</h4>) : ("")}
+      { plataformaFavorita !== "" ? (<h4 className={ plataformaFavorita === "Twitter" ? "tw" : plataformaFavorita === "Facebook" ? "fb" : "yt" }> {plataformaFavorita}</h4>) : ("")}
 
-      // 🚩 incoporar el componente Tarjeta, pasarle la funcion que maneja la plataforma favorita
+      <Tarjeta handleFavorita={handleFavorita}/>
 
       <button onClick={() => { handleTema(); }}>Cambiar tema</button>
     </div>
